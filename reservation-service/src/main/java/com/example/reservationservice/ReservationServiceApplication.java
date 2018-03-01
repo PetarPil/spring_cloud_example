@@ -22,14 +22,14 @@ public class ReservationServiceApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(ReservationRepository reservationRepository) {
 		return strings -> {
-			Stream.of("Josh", "Peter", "Eric", "Max").forEach(n -> reservationRepository.save(new Reservation(n)));
+			Stream.of("Josh", "Petar", "Eric", "Max").forEach(n -> reservationRepository.save(new Reservation(n)));
 		};
 	}
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(ReservationServiceApplication.class, args);
 	}
-	
+
 }
 
 @RepositoryRestResource
@@ -40,19 +40,19 @@ interface ReservationRepository extends JpaRepository<Reservation, Long> {
 
 @Entity
 class Reservation {
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String reservationName;
-	
+
 	public Reservation() {
 	}
-	
+
 	public Reservation(String name) {
 		this.setReservationName(name);
 	}
-	
+
 	@Override
 	public String toString() {
 		return "Reservation {id=" +id+ ", reservationName="+reservationName+"}";
@@ -60,14 +60,14 @@ class Reservation {
 	public String getReservationName() {
 		return reservationName;
 	}
-	
+
 	public void setReservationName(String reservationName) {
 		this.reservationName = reservationName;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
-	
+
+
 }
